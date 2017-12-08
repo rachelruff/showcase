@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 class Palindrome extends Component {
   render() {
-    return <p> "Palindrome" </p>;
+    return <p> Palindrome Component </p>;
   }
 }
 
