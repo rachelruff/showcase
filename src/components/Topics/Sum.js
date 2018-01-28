@@ -3,26 +3,22 @@ import React, { Component } from "react";
 class Sum extends Component {
   constructor() {
     super();
-
     this.state = {
-      number1: 0,
-      number2: 0,
+      userInputOne: 0,
+      userInputTwo: 0,
       sum: null
     };
   }
-
-  updateNumber1(val) {
-    this.setState({ number1: parseInt(val, 10) });
+  handleChangeOne(val) {
+    this.setState({ userInputOne: parseInt(val, 10) });
   }
 
-  updateNumber2(val) {
-    this.setState({ number2: parseInt(val, 10) });
+  handleChangeTwo(val) {
+    this.setState({ userInputTwo: parseInt(val, 10) });
   }
-
   add(num1, num2) {
     this.setState({ sum: num1 + num2 });
   }
-
   render() {
     return (
       <div className="puzzleBox sumPB">
@@ -30,16 +26,16 @@ class Sum extends Component {
         <input
           className="inputLine"
           type="number"
-          onChange={e => this.updateNumber1(e.target.value)}
+          onChange={e => this.handleChangeOne(e.target.value)}
         />
         <input
           className="inputLine"
           type="number"
-          onChange={e => this.updateNumber2(e.target.value)}
+          onChange={e => this.handleChangeTwo(e.target.value)}
         />
         <button
           className="confirmationButton"
-          onClick={() => this.add(this.state.number1, this.state.number2)}
+          onClick={() => this.add(this.state.userInputOne, this.state.userInputTwo)}
         >
           {" "}
           Add{" "}
@@ -49,4 +45,5 @@ class Sum extends Component {
     );
   }
 }
+
 export default Sum;

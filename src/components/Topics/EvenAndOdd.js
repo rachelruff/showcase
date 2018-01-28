@@ -1,40 +1,39 @@
 import React, { Component } from "react";
 
-export default class EvenAndOdd extends Component {
-  constructor() {
-    super();
-
+class EvenAndOdd extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       evenArray: [],
       oddArray: [],
       userInput: ""
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.assignEvenAndOdds = this.assignEvenAndOdds.bind(this);
   }
 
-  handleChange(val) {
-    this.setState({ userInput: val });
+  handleChange(value) {
+    this.setState({
+      userInput: value
+    });
   }
-
   assignEvenAndOdds(userInput) {
-    var arr = userInput.split(",");
+    var arr = userInput.split("");
     var evens = [];
     var odds = [];
-
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i] % 2 === 0) {
-        evens.push(parseInt(arr[i], 10));
-      } else {
-        odds.push(parseInt(arr[i], 10));
-      }
-    }
-
+    for (var i=0; i<arr.length; i++) {
+        if (arr[i]%2 === 0) {
+          evens.push(arr[i])}
+          else {odds.push(arr[i])}
+        }
     this.setState({ evenArray: evens, oddArray: odds });
   }
 
   render() {
     return (
       <div className="puzzleBox evenAndOddPB">
-        <h4> Evens and Odds </h4>
+        <h4>Evens and Odds</h4>
         <input
           className="inputLine"
           onChange={e => this.handleChange(e.target.value)}
@@ -45,18 +44,17 @@ export default class EvenAndOdd extends Component {
             this.assignEvenAndOdds(this.state.userInput);
           }}
         >
-          {" "}
-          Split{" "}
+          Split
         </button>
         <span className="resultsBox">
-          {" "}
-          Evens: {JSON.stringify(this.state.evenArray)}{" "}
+          Evens: {this.state.evenArray.toString()}
         </span>
         <span className="resultsBox">
-          {" "}
-          Odds: {JSON.stringify(this.state.oddArray)}{" "}
+          Odds: {this.state.oddArray.toString()}
         </span>
       </div>
     );
   }
 }
+
+export default EvenAndOdd;
